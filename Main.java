@@ -1,100 +1,31 @@
 package com.company;
-import java.util.Random;
 import java.util.Scanner;
+
 
 public class Main {
 
     public static void main(String[] args) {
+        double bok1, bok2;
         Scanner scan = new Scanner(System.in);
-        Random rand = new Random();
-    //Zadanie 6
-    System.out.println(getTriplled(4));
-    //Zadanie 7
-        System.out.println(getSqrt(3));
-        //Zadanie 8
-        System.out.println("Podaj a : ");
-        int alos = scan.nextInt();
-        System.out.println("Podaj b : ");
-        int blos = scan.nextInt();
-        int a, b, c;
-        if(alos < blos)
+        System.out.print("Podaj 1 bok prostokata: ");
+        bok1 = scan.nextInt();
+        System.out.print("Podaj 2 bok prostokata: ");
+        bok2 = scan.nextInt();
+        Okrag.promien = Math.sqrt(bok1 * bok1 + bok2 * bok2) / 2;
+        System.out.println("Promien okregu opisanego na tym prostokacie wynosi : " + Okrag.getPromien());
+        System.out.println("Powierzchnia okregu opisanego na tym prostokacie wynosi : " + Okrag.getPowierzchnia());
+        System.out.println("Srednica okregu opisanego na tym prostokacie wynosi : " + Okrag.getSrednica());
+        if(bok1 > bok2)
         {
-            a = rand.nextInt(blos + 1 - alos) + alos;
-            b = rand.nextInt(blos + 1 - alos) + alos;
-            c = rand.nextInt(blos + 1 - alos) + alos;
+            Okrag.promien = bok2 / 2;
         }
         else
         {
-            a = rand.nextInt(alos + 1 - blos) + blos;
-            b = rand.nextInt(alos + 1 - blos) + blos;
-            c = rand.nextInt(alos + 1 - blos) + blos;
+            Okrag.promien = bok1 / 2;
         }
-        System.out.println(checkTrojkat(a, b, c));
-
+        System.out.println("Promien okregu wpisanego w ten prostokat wynosi : " + Okrag.getPromien());
+        System.out.println("Powierzchnia okregu wpisanego w ten prostokat wynosi : " + Okrag.getPowierzchnia());
+        System.out.println("Srednica okregu wpisanego w ten prostokat wynosi : " + Okrag.getSrednica());
 
     }
-    public static double getTriplled(int y)
-    {
-        return Math.pow(y, 3);
     }
-
-        public static double getSqrt(int x)
-        {
-            return Math.sqrt(x);
-        }
-
-        public static int checkTrojkat(int a, int b, int c)
-        {
-            if(a > b)
-            {
-                if(a > c)
-                {
-                    if(a*a == b*b + c*c)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-                else
-                {
-                    if(c*c == a*a + b*b)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-            else if(b > c)
-            {
-                if(b*b == c*c + a*a)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-
-            }
-            else
-            {
-                if(c*c == a*a + b*b)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-
-        }
-
-
-}
